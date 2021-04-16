@@ -6,7 +6,7 @@
 
         <!-- flashing message / temporarly message -->
         @if (session()->has('status'))
-            <div class="bg-red-100 border-2 w-full p-4 rounder-lg mb-6 text-white text-center">
+            <div class="bg-red-600 border-2 w-full p-4 rounder-lg mb-6 text-white text-center">
                 {{ session('status') }}
             </div>
         @endif
@@ -38,6 +38,13 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2">
+                        <label for="remember">Remember me</label>
+                    </div>
+                </div>
 
             <div>
                 <button type="submit"

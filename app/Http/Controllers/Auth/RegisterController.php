@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+        // register is able for those who are not signed in
+        public function __construct()
+    {
+        $this->middleware('guest');
+    } 
+
+
     public function index() 
     {
         return view('auth.register');

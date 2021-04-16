@@ -17,6 +17,7 @@
                 <a href="/" class="p-3">Home</a>
             </li>
             <li>
+            <!-- dashboard gali būti matomas tik prisijungusiems vartotojams, dėl to jam reikia pritaikyti middleware -->
                 <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
             </li>
             <li>
@@ -29,7 +30,7 @@
             <!-- when signed in - auth and endauth -->
             @auth
             <li>
-                <a href="" class="p-3">My name</a>
+                <a href="" class="p-3 font-bold">Welcome back, {{ auth()->user()->name }}!</a>
             </li>
             <li>
                 <form action="{{ route('logout') }}" method="post" class="inline p-3">
