@@ -9,7 +9,8 @@ class PostController extends Controller
 {
     public function index() 
     {
-        $posts = Post::get(); // return all posts that exist in the database
+        // $posts = Post::get(); // return all posts that exist in the database
+        $posts = Post::paginate(20); // 2 - how many you posts want to display per page while others will go to the other page with page-menu (which will be bigger automatically)
         return view('posts.index', [
             'posts' => $posts
         ]);

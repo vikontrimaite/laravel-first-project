@@ -22,7 +22,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // creates data for testing, faker is a libarary with data 
+            // aka generate fake data for testing!
+            'body' => $this->faker->sentence(20)
         ];
     }
 }
