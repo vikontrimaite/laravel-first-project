@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index() 
     {
         // $posts = Post::get(); // return all posts that exist in the database
-        $posts = Post::paginate(20); // 2 - how many you posts want to display per page while others will go to the other page with page-menu (which will be bigger automatically)
+        $posts = Post::latest()->paginate(20); // 2 - how many you posts want to display per page while others will go to the other page with page-menu (which will be bigger automatically)
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -41,5 +41,15 @@ class PostController extends Controller
         return back();
 
             return back();
+    }
+
+    public function destroy(Post $post) 
+    {
+        // kur PostPolicy, kad galima istrinti tik savo, o ne kito postą, tai dar reik čia parašyti
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        return back();
     }
 }

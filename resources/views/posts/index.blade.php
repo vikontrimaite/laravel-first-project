@@ -26,25 +26,39 @@
         <!-- show posts -->
         @if ($posts->count())
         <!-- iterate trhrough all posts -->
-            @foreach ($posts as $post)
-                <div class="mb-4">
-                    <!-- user name -->
-                    <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600" text-sm>{{ $post->created_at->diffForHumans() }}</span>
-                    <!-- $post->created_at - pilna sukūrimo data -->
-                    <!-- diffForHumans() - '17 mins ago' -->
+        @foreach ($posts as $post)
+        <div class="mb-4">
+            <!-- user name -->
+            <a href="" class="font-bold">{{ $post->user->name }}</a> <span class="text-gray-600"
+                text-sm>{{ $post->created_at->diffForHumans() }}</span>
+            <!-- $post->created_at - pilna sukūrimo data -->
+            <!-- diffForHumans() - '17 mins ago' -->
 
-                    <p class="mb-2">
-                    {{ $post->body }}
-                    </p>
-                </div>
-            @endforeach
+            <p class="mb-2">
+                {{ $post->body }}
+            </p>
 
-            {{ $posts->links() }}
+            <!-- delete post -->
+            <!-- su @can rodys delete tik tam user, kuris can delete the post -->
+            @can('delete', $post)
+            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-blue-500 mb-3 text-sm">Delete post</button>
+            </form>
+            @endcan
+
+        </div>
+        @endforeach
+
+        {{ $posts->links() }}
 
         @else
         <p>There are no posts!</p>
 
         @endif
+
+
 
     </div>
 </div>
