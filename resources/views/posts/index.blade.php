@@ -29,7 +29,7 @@
             @foreach ($posts as $post)
             <div class="mb-4">
                 <!-- user name -->
-                <a href="" class="font-bold">{{ $post->user->name }}</a> 
+                <a href="{{ route('users.posts', $post->user) }}" class="font-bold">{{ $post->user->name }}</a> 
                 <span class="text-gray-600"
                     text-sm>{{ $post->created_at->diffForHumans() }}</span>
                 <!-- $post->created_at - pilna sukūrimo data -->
