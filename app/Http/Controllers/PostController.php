@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+
     public function index() 
     {
         // $posts = Post::get(); // return all posts that exist in the database

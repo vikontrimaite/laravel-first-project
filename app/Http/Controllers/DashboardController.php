@@ -10,7 +10,7 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     } 
-
+    
     public function index() 
     {
         return view('dashboard');
